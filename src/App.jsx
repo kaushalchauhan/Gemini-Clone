@@ -1,9 +1,9 @@
+import './index.css';
+import './App.css';
+import Sidebar from './components/Sidebar/Sidebar';
 
-import './App.css'
-import Sidebar from "./components/Sidebar/Sidebar"
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -12,4 +12,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
