@@ -4,12 +4,16 @@ import { assets } from "../../assets/assets"
 
 const Sidebar = () => {
   const [sidebarShow, setSidebarShow] = useState(false);
-  const handleSideBar = () => {
-    setSidebarShow(!sidebarShow)
+  const handleSidebarToggle = () => {
+    setSidebarShow(!sidebarShow);
   }
-  return <div className="sidebar">
+  return <div className="sidebar"  >
     <div className="top">
-      <img className="menu" src={assets.menu_icon} alt="menu-icon" onClick={handleSideBar} />
+      <div class="tooltip-container">
+        <img className="menu" src={assets.menu_icon} alt="menu-icon" onClick={handleSidebarToggle} />
+        <div class="tooltip">{sidebarShow ? "Collapse Menu" : "Expend Menu"}</div>
+      </div>
+
       <div className="new-chat">
         <img src={assets.plus_icon} alt="" />
         {sidebarShow && <p>New Chat</p>}
