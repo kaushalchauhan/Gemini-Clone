@@ -1,3 +1,5 @@
+### Live : https://gemini-v2.netlify.app/
+
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 font: Outfit;
@@ -38,5 +40,19 @@ font: Outfit;
 .tooltip-container:hover .tooltip {
   visibility: visible;
   opacity: 1;
+}
+```
+
+- if response has html tags, this will show that as content.
+
+```jsx
+<p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+```
+
+- to hide scroll-bar
+
+```css
+.result::-webkit-scrollbar {
+  display: none;
 }
 ```

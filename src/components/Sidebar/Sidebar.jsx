@@ -9,9 +9,9 @@ const Sidebar = () => {
   }
   return <div className="sidebar"  >
     <div className="top">
-      <div class="tooltip-container">
+      <div className="tooltip-container">
         <img className="menu" src={assets.menu_icon} alt="menu-icon" onClick={handleSidebarToggle} />
-        <div class="tooltip">{sidebarShow ? "Collapse Menu" : "Expend Menu"}</div>
+        <div className="tooltip">{sidebarShow ? "Collapse Menu" : "Expend Menu"}</div>
       </div>
 
       <div className="new-chat">
