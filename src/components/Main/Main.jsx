@@ -1,16 +1,25 @@
 import React, { useContext } from 'react'
-import { Github_User_Img } from '../../utils/constants';
+// import { Github_User_Img } from '../../utils/constants';
 import { assets } from "../../assets/assets";
 import "./Main.css";
 import { Context } from '../../context/context';
 
 const Main = () => {
-  const { onSent, recentPrompt, showResult, loading, resultData, input, setInput } = useContext(Context);
+  const { onSent, recentPrompt, showResult, loading, resultData, input, setInput, setSidebarShow } = useContext(Context);
+  const handleCardClick = (prompt) => {
+    setInput(prompt);
+    onSent(prompt);
+  };
   return (
     <div className='main'>
       <div className="nav">
+        <img className="menu" src={assets.menu_icon} alt="menu-icon" onClick={() => {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+          setSidebarShow(true)
+        }} />
         <p>Gemini</p>
-        <img className='user-profile-img' src={Github_User_Img} alt="user-img" onError={(e) => {
+        <img className='user-profile-img' src={assets.kaushal_img} alt="user-img" onError={(e) => {
           e.target.src = assets.user_icon;
         }} />
       </div>
@@ -21,25 +30,25 @@ const Main = () => {
             <p>How can I help you today?</p>
           </div>
           <div className="cards">
-            <div className="card">
+            <div className="card" onClick={() => handleCardClick("What’s the reaction to and impact of autonomous vehicles")}>
               <p>What’s the reaction to and impact of autonomous vehicles</p>
               <img src={assets.bulb_icon} alt="" />
             </div>
-            <div className="card">
+            <div className="card" onClick={() => handleCardClick("Brainstorm ways to make a dish more delicious")}>
               <p>Brainstorm ways to make a dish more delicious</p>
               <img src={assets.compass_icon} alt="" />
             </div>
-            <div className="card">
+            <div className="card" onClick={() => handleCardClick("Help me pick a movie to watch based on a genre")}>
               <p>Help me pick a movie to watch based on a genre</p>
               <img src={assets.code_icon} alt="" />
             </div>
-            <div className="card">
+            <div className="card" onClick={() => handleCardClick("Help me understand American football")}>
               <p>Help me understand American football</p>
               <img src={assets.message_icon} alt="" />
             </div>
           </div></> : <div className='result'>
           <div className="result-title">
-            <img src={Github_User_Img} alt="" />
+            <img src={assets.kaushal_img} alt="" />
             <p>{recentPrompt}</p>
           </div>
           <div className="result-data">
@@ -64,7 +73,7 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img src={assets.send_icon} alt="sent-btn" onClick={() => onSent()} />
+              {input && <img src={assets.send_icon} alt="sent-btn" onClick={() => onSent()} />}
             </div>
           </div>
           <p className="bottom-info">

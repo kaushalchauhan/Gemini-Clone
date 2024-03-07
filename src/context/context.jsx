@@ -9,7 +9,10 @@ const ContextProvider = (props) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
-
+  const [sidebarShow, setSidebarShow] = useState(false);
+  const handleSidebarToggle = () => {
+    setSidebarShow(!sidebarShow);
+  }
   const delayData = (index, nextWord) => {
     setTimeout(() => {
       setResultData(prev => prev + nextWord);
@@ -55,7 +58,7 @@ const ContextProvider = (props) => {
   };
   // onSent("what is react js");
   const contextValue = {
-    previousPrompt, setPreviousPrompt, onSent, recentPrompt, setRecentPrompt, showResult, loading, resultData, input, setInput, newChat
+    previousPrompt, setPreviousPrompt, onSent, recentPrompt, setRecentPrompt, showResult, loading, resultData, input, setInput, newChat, handleSidebarToggle, sidebarShow, setSidebarShow
   };
   return (
     <Context.Provider value={contextValue}>{props.children}</Context.Provider>

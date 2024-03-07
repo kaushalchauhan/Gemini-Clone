@@ -23,8 +23,12 @@
   box-shadow: 3px 3px 18px 1px #9999e6;
   border: 2px solid #9999e6;
 }
-.main .main-container {
-  width: 900px;
+.nav .menu {
+  display: none;
+  width: 20px;
+}
+.main-container {
+  max-width: 900px;
   margin: auto;
 }
 .main .greet {
@@ -168,8 +172,27 @@
     background-position: 800px 0;
   }
 }
+
 .result-data p {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.8;
+}
+@media (max-width: 600px) {
+  .main-bottom input {
+    flex: none;
+    width: 150px;
+  }
+  .main-bottom img {
+    width: 20px;
+  }
+  .main-bottom .search-box {
+    padding: 5px 10px;
+  }
+  .search-box div {
+    gap: 5px;
+  }
+  .nav .menu {
+    display: block;
+  }
 }

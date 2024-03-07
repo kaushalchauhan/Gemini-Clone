@@ -4,11 +4,9 @@ import { assets } from "../../assets/assets"
 import { Context } from "../../context/context";
 
 const Sidebar = () => {
-  const [sidebarShow, setSidebarShow] = useState(false);
-  const { onSent, previousPrompt, setRecentPrompt, newChat } = useContext(Context);
-  const handleSidebarToggle = () => {
-    setSidebarShow(!sidebarShow);
-  }
+
+  const { onSent, previousPrompt, setRecentPrompt, newChat, handleSidebarToggle, sidebarShow } = useContext(Context);
+
   const loadPrevPrompt = async (prompt) => {
     setRecentPrompt(prompt);
     await onSent(prompt);
@@ -17,6 +15,10 @@ const Sidebar = () => {
     <div className="top">
       <div className="tooltip-container">
         <img className="menu" src={assets.menu_icon} alt="menu-icon" onClick={handleSidebarToggle} />
+        <img className="menu-mobile" src={assets.menu_icon} alt="menu-icon" onClick={() => {
+          const sidebar = document.querySelector('.sidebar');
+          sidebar.style.display = sidebar.style.display === 'none' || "" ? 'block' : 'none';
+        }} />
         <div className="tooltip">{sidebarShow ? "Collapse Menu" : "Expend Menu"}</div>
       </div>
 
@@ -24,21 +26,27 @@ const Sidebar = () => {
         <img src={assets.plus_icon} alt="" />
         {sidebarShow && <p>New Chat</p>}
       </div>
+
       <div className="recent">
-        <p className="recent-title">
-          {previousPrompt.map((item, index) => {
+        {previousPrompt.length > 0 ? (
+          <span>
+            Recent <sup>{previousPrompt.length <= 9 ? previousPrompt.length : '9+'}</sup>
+          </span>
+        ) : null}
+        {sidebarShow && <p className="recent-title">
+          {previousPrompt.slice(-9).map((item, index) => {
             return (
               <div className="recent-entry" key={index} onClick={() => loadPrevPrompt(item)}>
                 <img src={assets.message_icon} alt="" />
                 <div className="tooltip-container">
-                  <p>{sidebarShow ? item && item.slice(0, 17) : item.slice(0, 12)}...</p>
+                  <p>{item && item.slice(0, 17)}...</p>
                   <div className="tooltip">{item}</div>
                 </div>
-
               </div>
             )
           })}
-        </p>
+        </p>}
+
 
       </div>
     </div>

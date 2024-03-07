@@ -9,6 +9,7 @@
   min-height: 100vh;
   display: flex;
   /* background-color: #22222298; */
+  animation: fade 2s;
 }
 ::selection {
   background-color: #eec270;
@@ -33,4 +34,12 @@
 .tooltip-container:hover .tooltip {
   visibility: visible;
   opacity: 1;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

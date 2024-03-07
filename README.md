@@ -56,3 +56,5 @@ font: Outfit;
   display: none;
 }
 ```
+
+- issue to solve later - previous prompts cleanup after a specific length.
