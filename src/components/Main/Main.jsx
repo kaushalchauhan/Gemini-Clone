@@ -54,7 +54,11 @@ const Main = () => {
 
         <div className="main-bottom">
           <div className="search-box">
-            <input type="text" placeholder='Enter a prompt here' value={input} onChange={(e) => {
+            <input type="text" placeholder='Enter a prompt here' value={input} onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onSent()
+              }
+            }} onChange={(e) => {
               setInput(e.target.value)
             }} />
             <div>

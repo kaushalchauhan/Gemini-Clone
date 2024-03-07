@@ -10,6 +10,9 @@
   display: flex;
   /* background-color: #22222298; */
 }
+::selection {
+  background-color: #eec270;
+}
 .tooltip-container {
   position: relative;
 }
