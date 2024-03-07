@@ -10,13 +10,17 @@ const Main = () => {
     setInput(prompt);
     onSent(prompt);
   };
+  const handleSidebarToggle = () => {
+    setSidebarShow((prevSidebarShow) => !prevSidebarShow);
+
+  };
   return (
     <div className='main'>
       <div className="nav">
         <img className="menu" src={assets.menu_icon} alt="menu-icon" onClick={() => {
           const sidebar = document.querySelector('.sidebar');
-          sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
-          setSidebarShow(true)
+          sidebar.style.display = 'block';
+          setSidebarShow(true);
         }} />
         <p>Gemini</p>
         <img className='user-profile-img' src={assets.kaushal_img} alt="user-img" onError={(e) => {
@@ -78,6 +82,8 @@ const Main = () => {
           </div>
           <p className="bottom-info">
             Gemini may display inaccurate info, including about people, so double-check its responses.
+            <br />
+            Gemini-inspired, creation by Kaushal ❤️
           </p>
         </div>
       </div>
