@@ -183,7 +183,10 @@
     margin: 0;
   }
   .main .card {
-    height: 100px;
+    height: 80px;
+  }
+  .main .card p {
+    font-size: 0.9rem;
   }
   .main-bottom input {
     flex: none;
@@ -208,7 +211,8 @@
     width: 100%;
     box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding-block: 10px;
+    padding: 10px;
+    padding-bottom: 2px;
   }
 
   .main-bottom .search-box {
@@ -222,5 +226,9 @@
 
   .search-box div {
     gap: 0px;
+  }
+  .main .bottom-info {
+    margin: 2px auto;
+    margin-top: 6px;
   }
 }
